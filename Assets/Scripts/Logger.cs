@@ -12,7 +12,7 @@ public class Logger : MonoBehaviour
 {
 
     GameObject centerEye, lController, rController;
-    bool recording;
+    bool recording, leftButton;
     StringBuilder buff;
     public TMP_Text hudText,classInd;
     public int classClass = 0;
@@ -80,9 +80,17 @@ public class Logger : MonoBehaviour
         
         if (OVRInput.Get(OVRInput.RawButton.LIndexTrigger))
         {
-            if (!recording)
+            if (!recording && !leftButton)
             {
                 IncrementClass();
+                leftButton = true;
+            }
+        }
+        else
+        {
+            if (leftButton)
+            {
+                leftButton = false;
             }
         }
 
