@@ -66,7 +66,7 @@ public class Logger : MonoBehaviour
             if (hudText)
             {
                 hudText.color = Color.gray;
-                hudText.text = "Press and hold right index trigger to record";
+                hudText.text = "Press and hold right index trigger to record. Press left trigger to start new class.";
                 
             }
             
