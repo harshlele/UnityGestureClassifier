@@ -26,7 +26,6 @@ public class Logger : MonoBehaviour
         lController = GameObject.Find("LeftControllerAnchor");
         rController = GameObject.Find("RightControllerAnchor");
         buff = new StringBuilder();
-        buff.AppendLine("hd_x,hd_y,hd_z,l_x,l_y,l_z,r_x,r_y,r_z");
         Directory.CreateDirectory(folderName);
 
        
