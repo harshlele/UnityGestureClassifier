@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Logger : MonoBehaviour
+public class Runner : MonoBehaviour
 {
 
     GameObject centerEye, lController, rController;
