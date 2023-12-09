@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.itisnajim.socketiounity": "https://github.com/itisnajim/SocketIOUnity.git",
     "com.meta.movement": "https://github.com/oculus-samples/Unity-Movement.git",
     "com.meta.xr.simulator": "file:C:/VIBE/com.meta.xr.simulator-57.0.0 (3).tgz",
     "com.unity.collab-proxy": "2.0.5",
