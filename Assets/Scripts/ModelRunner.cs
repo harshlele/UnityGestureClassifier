@@ -18,6 +18,8 @@ public class ModelRunner : MonoBehaviour
     List<string[]> buffer = new List<string[]>();
     int size = 0;
 
+    Dictionary<string, string> labels = new Dictionary<string, string>() { { "0", "idle" }, { "1", "clap 2x" }, { "2", "T-pose" }, { "3", "raise right hand" }, { "4", "black panther pose" }, { "5", "yes" }, { "6", "no" } } ;
+
     // Start is called before the first frame update
     async void Start()
     {
@@ -38,6 +40,8 @@ public class ModelRunner : MonoBehaviour
             if (!recording)
             {
                 recording = true;
+                detectedText.text = "Recording...";
+                detectedText.color = Color.red;
             }
 
             buffer.Add(new string[] { centerEye.transform.position.x.ToString("R"), centerEye.transform.position.y.ToString("R"), centerEye.transform.position.z.ToString("R"), lController.transform.position.x.ToString("R"), lController.transform.position.y.ToString("R"), lController.transform.position.z.ToString("R"), rController.transform.position.x.ToString("R"), rController.transform.position.y.ToString("R"), rController.transform.position.z.ToString("R") });
@@ -84,11 +88,12 @@ public class ModelRunner : MonoBehaviour
             
             if(result.result != null)
             {
-                detectedText.text = "Detected Class: " + result.result + " " + new System.Random().Next(1000);
+                detectedText.text = "Detected Class: " + labels[result.result];
+                detectedText.color = Color.green;
             }
         }
         else
-            Debug.Log("Error ");
+            Debug.Log("Error " + req.error);
         
         // Some code after success
 
