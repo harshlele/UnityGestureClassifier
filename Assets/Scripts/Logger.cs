@@ -40,7 +40,7 @@ public class Runner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+        if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger) || Input.GetKeyDown(KeyCode.Space))
         {
             if (hudText)
             {
@@ -54,11 +54,11 @@ public class Runner : MonoBehaviour
                 buff.AppendLine("hd_x,hd_y,hd_z,l_x,l_y,l_z,r_x,r_y,r_z");
             }
 
-            string hPos = Regex.Replace(centerEye.transform.position.ToString(),@"\(|\)|\s","");
-            string lPos = Regex.Replace(lController.transform.position.ToString(), @"\(|\)|\s", "");
-            string rPos = Regex.Replace(rController.transform.position.ToString(), @"\(|\)|\s", "");
+            Vector3 hPos = centerEye.transform.position;
+            Vector3 lPos = lController.transform.position;
+            Vector3 rPos = rController.transform.position;
 
-            buff.AppendLine($"{hPos},{lPos},{rPos}");
+            buff.AppendLine($"{hPos.x.ToString("R")},{hPos.y.ToString("R")},{hPos.z.ToString("R")},{lPos.x.ToString("R")},{lPos.y.ToString("R")},{lPos.z.ToString("R")},{rPos.x.ToString("R")},{rPos.y.ToString("R")},{rPos.z.ToString("R")}");
         }
         else
         {
