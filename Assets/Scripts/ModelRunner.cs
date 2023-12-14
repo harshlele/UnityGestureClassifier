@@ -11,6 +11,8 @@ public class ModelRunner : MonoBehaviour
     GameObject centerEye, lController, rController;
     public TMP_Text detectedText;
 
+    DataRow row;
+
     Boolean recording = false;
 
     Uri uri = new Uri("http://localhost:3000");
@@ -19,14 +21,15 @@ public class ModelRunner : MonoBehaviour
     int size = 0;
 
     Dictionary<string, string> labels = new Dictionary<string, string>() { { "0", "idle" }, { "1", "clap 2x" }, { "2", "T-pose" }, { "3", "raise right hand" }, { "4", "black panther pose" }, { "5", "yes" }, { "6", "no" } } ;
+    //Dictionary<string, string> labels = new Dictionary<string, string>() {{ "0", "clap 2x" }, { "1", "T-pose" }};
 
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
         centerEye = GameObject.Find("CenterEyeAnchor");
         lController = GameObject.Find("LeftHandAnchor");
         rController = GameObject.Find("RightHandAnchor");
-
+        row = gameObject.GetComponent<DataRow>();
     }
 
 
@@ -46,7 +49,7 @@ public class ModelRunner : MonoBehaviour
 
             
 
-            buffer.Add(new string[] { centerEye.transform.position.x.ToString("R"), centerEye.transform.position.y.ToString("R"), centerEye.transform.position.z.ToString("R"), lController.transform.position.x.ToString("R"), lController.transform.position.y.ToString("R"), lController.transform.position.z.ToString("R"), rController.transform.position.x.ToString("R"), rController.transform.position.y.ToString("R"), rController.transform.position.z.ToString("R") });
+            buffer.Add(row.strRow());
         }
         else
         {
@@ -64,8 +67,10 @@ public class ModelRunner : MonoBehaviour
         }
 
         //debug code
-
+        //detectedText.text = string.Join(",", row.GetDataRow());
     }
+
+    
 
     public void Request()
     {

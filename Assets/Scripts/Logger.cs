@@ -19,6 +19,8 @@ public class Runner : MonoBehaviour
     public int classEx = 0;
     private string folderName = "C:\\Users\\hlele\\Unity\\Record-" + DateTime.Now.ToString("MM-dd") + "_" + new System.Random().Next(1000) + "\\";
 
+    DataRow row;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class Runner : MonoBehaviour
         buff = new StringBuilder();
         Directory.CreateDirectory(folderName);
 
+        row = gameObject.GetComponent<DataRow>();
        
     }
 
@@ -51,7 +54,7 @@ public class Runner : MonoBehaviour
             if (!recording)
             {
                 recording = true;
-                buff.AppendLine("hd_x,hd_y,hd_z,l_x,l_y,l_z,r_x,r_y,r_z");
+                //buff.AppendLine("hd_x,hd_y,hd_z,l_x,l_y,l_z,r_x,r_y,r_z");
             }
 
             Vector3 hPos = centerEye.transform.position;
@@ -60,7 +63,7 @@ public class Runner : MonoBehaviour
 
             
 
-            buff.AppendLine($"{hPos.x.ToString("R")},{hPos.y.ToString("R")},{hPos.z.ToString("R")},{lPos.x.ToString("R")},{lPos.y.ToString("R")},{lPos.z.ToString("R")},{rPos.x.ToString("R")},{rPos.y.ToString("R")},{rPos.z.ToString("R")}");
+            buff.AppendLine(string.Join(",",row.strRow()));
         }
         else
         {
@@ -97,6 +100,8 @@ public class Runner : MonoBehaviour
 
 
     }
+
+
 
     private void FixedUpdate()
     {
