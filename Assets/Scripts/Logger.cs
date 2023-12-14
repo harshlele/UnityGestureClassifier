@@ -58,6 +58,8 @@ public class Runner : MonoBehaviour
             Vector3 lPos = lController.transform.position;
             Vector3 rPos = rController.transform.position;
 
+            
+
             buff.AppendLine($"{hPos.x.ToString("R")},{hPos.y.ToString("R")},{hPos.z.ToString("R")},{lPos.x.ToString("R")},{lPos.y.ToString("R")},{lPos.z.ToString("R")},{rPos.x.ToString("R")},{rPos.y.ToString("R")},{rPos.z.ToString("R")}");
         }
         else

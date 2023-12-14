@@ -24,9 +24,9 @@ public class ModelRunner : MonoBehaviour
     async void Start()
     {
         centerEye = GameObject.Find("CenterEyeAnchor");
-        lController = GameObject.Find("LeftControllerAnchor");
-        rController = GameObject.Find("RightControllerAnchor");
-        
+        lController = GameObject.Find("LeftHandAnchor");
+        rController = GameObject.Find("RightHandAnchor");
+
     }
 
 
@@ -43,6 +43,8 @@ public class ModelRunner : MonoBehaviour
                 detectedText.text = "Recording...";
                 detectedText.color = Color.red;
             }
+
+            
 
             buffer.Add(new string[] { centerEye.transform.position.x.ToString("R"), centerEye.transform.position.y.ToString("R"), centerEye.transform.position.z.ToString("R"), lController.transform.position.x.ToString("R"), lController.transform.position.y.ToString("R"), lController.transform.position.z.ToString("R"), rController.transform.position.x.ToString("R"), rController.transform.position.y.ToString("R"), rController.transform.position.z.ToString("R") });
         }
@@ -61,7 +63,8 @@ public class ModelRunner : MonoBehaviour
             }
         }
 
-       
+        //debug code
+
     }
 
     public void Request()
