@@ -18,8 +18,7 @@ public class ModelRunner : MonoBehaviour
     Uri uri = new Uri("http://localhost:3000");
 
     List<string[]> buffer = new List<string[]>();
-    int size = 0;
-
+    
     Dictionary<string, string> labels = new Dictionary<string, string>() { { "0", "idle" }, { "1", "clap 2x" }, { "2", "T-pose" }, { "3", "raise right hand" }, { "4", "black panther pose" }, { "5", "yes" }, { "6", "no" } } ;
     //Dictionary<string, string> labels = new Dictionary<string, string>() {{ "0", "clap 2x" }, { "1", "T-pose" }};
 
